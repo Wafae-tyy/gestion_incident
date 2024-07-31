@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+
+<head>
+  <script src="../js/color-modes.js"></script>
+  <link rel="stylesheet" href="../bootstrap-icons-1.11.3/font/bootstrap-icons.min.css">
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.122.0">
+  <title>Modifier page</title>
+
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/sombre.light.css">
+  <!-- Custom styles for this template -->
+  <link href="../css/sidebars.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/myStyle.css">
+</head>
+
+<body>
+  <%- include('../Components/sombre.light.ejs') %>
+  <main class="d-flex flex-nowrap">
+    <%- include('../Components/ocp.ejs',{currentPage : "view"}) %>
+   
+    <section class="w-100">
+      <marquee bgcolor="green">
+        <p class="my-3">
+          <i>
+            <h3>Bienvenue sur notre site Web</h3>
+          </i>
+        </p>
+      </marquee>
+      <br>
+      <%- include('../Components/navbar.ejs') %>
+
+      <nav class="px-2 d-flex flex-wrap justify-content-between fs-5" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Page d'accueil</a></li>
+          <li class="breadcrumb-item active" aria-current="page"><%= obj.Demandeur %></li>
+        </ol>
+        <p class="me-md-5"><span class="fw-medium fs-6">Id:</span> <%= obj._id %></p>
+      </nav>
+
+
+      
+      <table style="width: 88%;" class=" text-center mx-auto table mt-5 table-striped table-bordered  ">
+        <tbody>
+         <tr>
+          <th scope="col">Titre</th>
+          <td><%= obj.Titre %></td>
+         </tr>
+         <tr>
+          <th scope="col">Lieu</th>
+          <td><%= obj.Lieu %></td>
+         </tr>
+         <tr>
+          <th scope="col">Date</th>
+          <td><%= moment(obj.createdAt).format("MMM Do YY"); %></td>
+         </tr>
+         <tr>
+          <th scope="col">Statu</th>
+          <td><%= obj.Statu %></td>
+         </tr>
+         <tr>
+          <th scope="col">Etat</th>
+          <td><%= obj.Etat %></td>
+         </tr>
+         <tr>
+          <th scope="col">Priority</th>
+          <td><%= obj.Priority %></td>
+         </tr>
+         
+         <tr>
+          <th scope="col">Technicien</th>
+          <td><%= obj.Technecien %></td>
+         </tr>
+         <tr>
+          <th scope="col">Demandeur</th>
+          <td><%= obj.Demandeur %></td>
+         </tr>
+         <tr>
+          <th scope="col">Email</th>
+          <td><%= obj.Email %></td>
+         </tr>
+         <tr>
+          <th scope="col">Téléphone</th>
+          <td><%= obj.Téléphone %></td>
+         </tr>
+         <tr>
+          <th scope="col">Dernière mise à jour</th>
+          <td>
+            <%= moment(obj.updatedAt).fromNow(); %>
+         </tr>
+
+        
+        
+
+
+
+        </tbody>
+      </table>
+
+    </section>
+
+ 
+
+  </main>
+  <script src="../js/bootstrap.bundle.min.js"></script>
+
+  <script src="../js/sidebars.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+
+</html>

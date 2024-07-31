@@ -1,0 +1,46 @@
+.bi-tree-fill::before{
+    margin: 1rem;
+    font-size: 1.9rem;
+    
+}
+
+
+/* Sidebars */
+.sidebar {
+    width: 280px ;
+    transition: 0.3s;
+
+}
+.small-sidebars {
+    width: 77px ;
+}
+
+.small-sidebars .sidebar-text{
+    display: none;
+}
+/* logo*/
+.bi-tree-fill{
+    rotate: 360deg;
+    transition: 1s;
+    margin-top: 0.1rem;
+}
+
+.small-sidebars .bi-tree-fill{
+    margin-top: 2.5rem;
+}
+.small-sidebars .bi-tree-fill::before{
+    content: "\F5E2";
+    transform:rotateY(360deg) ;
+    transition: 1s;
+    margin-left: 0.55rem;
+}
+
+.bi-x-circle{
+    font-size: 1.4rem;
+    transition: 1s;
+}
+
+.small-sidebars .bi-x-circle::before{
+    content: "\F134";
+    transition: 1s;
+}

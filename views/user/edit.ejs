@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+
+<head>
+  <script src="../js/color-modes.js"></script>
+  <link rel="stylesheet" href="../bootstrap-icons-1.11.3/font/bootstrap-icons.min.css">
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.122.0">
+  <title>Modifier page</title>
+
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/sombre.light.css">
+  <!-- Custom styles for this template -->
+  <link href="../css/sidebars.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/myStyle.css">
+</head>
+
+<body>
+  <%- include('../Components/sombre.light.ejs') %>
+
+  <main class="d-flex flex-nowrap">
+
+    <%- include('../Components/ocp.ejs',{currentPage : "edit"}) %>
+    <section class="w-100">
+      <marquee bgcolor="green">
+        <p class="my-3">
+          <i>
+            <h3>Bienvenue sur notre site Web</h3>
+          </i>
+        </p>
+      </marquee>
+      <br>
+      <%- include('../Components/navbar.ejs') %>
+
+      <nav class="px-2 d-flex flex-wrap justify-content-between fs-5" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Page d'accueil</a></li>
+          <li class="breadcrumb-item active" aria-current="page"><%= obj.Demandeur %></li>
+        </ol>
+        <p class="me-md-5"><span class="fw-medium fs-6">Id:</span> <%= obj._id %></p>
+      </nav>
+
+
+      <form action="/edit/<%= obj._id %>?_method=PUT" method="post" class="mx-0 row gx-3 gy-3 mt-2">
+
+        <div class="col-md-6">
+          <label for="inputTechnicien4" class="form-label">Technecien:</label>
+          <input value="<%= obj.Technecien %>" name="Technecien" type="text" class="form-control" id="inputTechnicien4"  >
+        </div>
+        <div class="col-md-6">
+          <label for="inputDemandeur4" class="form-label">Demandeur:</label>
+          <input value="<%= obj.Demandeur %>" name="Demandeur" type="text" class="form-control" id="inputDemandeur4">
+        </div>
+
+
+        <div class="col-md-6">
+          <label for="inputemail" class="form-label">Email:</label>
+          <input value="<%= obj.Email %>" name="Email" type="email" class="form-control" id="inputemail">
+        </div>
+        <div class="col-md-6">
+          <label for="inputTele" class="form-label">Téléphone:</label>
+          <input value="<%= obj.Téléphone %>" name="Téléphone" type="text" class="form-control" id="inputTele">
+        </div>
+
+
+        <div class="col-md-6">
+          <label for="inputTitre4" class="form-label">Titre:</label>
+          <input value="<%= obj.Titre %>" name="Titre" type="text" class="form-control" id="inputTitre4">
+        </div>
+        <div class="col-md-6">
+          <label for="inputPlace" class="form-label">Lieu:</label>
+          <select name="Lieu" id="inputPlace" class="form-select">
+            <option selected hidden disabled>Choisissez ici...</option>
+            <% var list_ville = ["Casablanca","Tétouan","Agadir","Kenitra","Oujda-Angad","Meknès","Rabat","Sale","Tangier","Marrakech","Fès","Guelmim","Larache","My Drarga","Ksar El Kebir","Inezgane","Al Khmissat","Barrechid","Settat","Taza","Nador","Ait Melloul","Béni Mellal","Kouribga","Mohammedia","Laâyoune","El Jadid","Khénifra","Safi","Temara","Taourirt","Ouezzane","Skhirate","Souq Sebt Oulad Nemma","Aïn Harrouda","Martil","Youssoufia","Moulay Abdallah","Tiznit","Sidi Qacem","Fnidq","Sefrou","Ben Guerir","Oulad Teïma","Guercif","Errachidia","Sidi Slimane","Oued Zem","Al Fqih Ben Çalah","Bouskoura","Ad Dakhla","Berkane","Imzouren","El Hajeb","Aguelmous","Zaïo","Biougra","Sidi Yahia El Gharb","Aziylal","Ait Ourir","Zagora","Temsia","Azemmour","El Aïoun","Mrirt","Jerada","Boujad","Qasbat Tadla","Al Aaroui","Ad Darwa","Beni Yakhlef","Ain El Aouda","El Kelaa des Srarhna","Azrou","Midalt","M’diq","Mehdya","Souk et Tnine Jorf el Mellah","Sidi Smai’il","Bou Arfa","Tameslouht","Arfoud","Demnat","Al ’Attawia","Mechraa Bel Ksiri","Tit Mellil","Tifariti","Bir Jdid","Oulad Barhil","Oulad Tayeb","Bouknadel","Zawyat ech Cheïkh","Missour","Iheddadene","Moulay Bousselham","Oulad Yaïch","Tahla","Chichaoua","Aïn Taoujdat","Zeghanghane"] %>
+          <% list_ville.forEach(obj => { %>
+           <option><%= obj %></option>
+          <% }) %>
+          
+          </select>
+        </div>
+        
+        <div class="col-md-6">
+          <label for="inputStatus" class="form-label">Statu:</label>
+          <select name="Statu" id="inputStatus" class="form-select">
+            <option <%= "En cours" === obj.Statu ? "selected" : null %>>En cours</option>
+            <option <%= "Terminé" === obj.Statu ? "selected" : null %>>Terminé</option>
+          </select>
+
+        </div>
+
+        <div class="col-md-6">
+          <label for="inputState" class="form-label">Etat:</label>
+          <select name="Etat" id="inputState" class="form-select">
+            <option <%= "Validé" === obj.Etat ? "selected" : null %>>Validé</option>
+            <option <%= "Non validé" === obj.Etat ? "selected" : null %>>Non validé</option>
+          </select>
+        </div>
+
+        <div class="col-12">
+          <label for="inputPriority" class="form-label">Priority:</label>
+          <select name="Priority" id="inputPriority" class="form-select">
+            <option <%= "Faible" === obj.Priority ? "selected" : null %>>Faible</option>
+            <option <%= "Moyenne" === obj.Priority ? "selected" : null %>>Moyenne</option>
+            <option <%= "Haut" === obj.Priority ? "selected" : null %>>Haut</option>
+            <option <%= "Très haut" === obj.Priority ? "selected" : null %>>Très haut</option>
+          </select>
+
+        </div>
+        <div class="col-md-3">
+          <button type="submit" class="btn btn-primary">Mettre à jour les modifications</button>
+        </div>
+        <div class="col-md-2">
+          <button data-bs-toggle="modal" data-bs-target="#exampleModal" type="button" class="btn btn-danger">Supprimer
+            tikcet</button>
+        </div>
+      </form>
+
+    </section>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Supprimer ticket</h1>
+            <button type="submit" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Êtes-vous sûr de vouloir continuer la suppression du ticket?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+            <form action="/edit/<%= obj._id %>?_method=DELETE"  method="post">
+            <button type="submit" class="btn btn-danger">Supprimer</button>
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </main>
+  <script src="../js/bootstrap.bundle.min.js"></script>
+
+  <script src="../js/sidebars.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+
+</html>

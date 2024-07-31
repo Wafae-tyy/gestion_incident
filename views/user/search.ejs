@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+
+<head>
+  <script src="../js/color-modes.js"></script>
+  <link rel="stylesheet" href="../bootstrap-icons-1.11.3/font/bootstrap-icons.min.css">
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.122.0">
+  <title>Recherche page
+  </title>
+
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/sombre.light.css">
+  <!-- Custom styles for this template -->
+  <link href="../css/sidebars.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/myStyle.css">
+</head>
+
+<body>
+  <%- include('../Components/sombre.light.ejs') %>
+
+  <main class="d-flex flex-nowrap">
+
+    <%- include('../Components/ocp.ejs',{currentPage : "search"}) %>
+    <section class="w-100">
+      <marquee bgcolor="green">
+        <p class="my-3">
+          <i>
+            <h3>Bienvenue sur notre site Web</h3>
+          </i>
+        </p>
+      </marquee>
+      <br>
+      <%- include('../Components/navbar.ejs') %>
+
+
+<table style="width: 99%;" class="table table-striped text-center mx-auto table mt-5 table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Titre</th>
+        <th scope="col">Lieu</th>
+        <th scope="col">Date</th>
+        <th scope="col">Statu</th>
+        <th scope="col">Etat</th>
+        <th scope="col">Priorité</th>
+        <th scope="col">Action</th>
+      </tr>
+      <tbody>
+     <% arr.forEach((item, index) => { %>
+      <tr>
+        <td scope="row"><%= index +1 %></td>
+        <td><%= item.Titre %></td>
+        <td><%= item.Lieu %></td>
+        <td><%= moment(item.createdAt).format("MMM Do YY"); %></td>
+        <td><%= item.Statu %></td>
+        <td > <%= item.Etat %></td>
+        <td><%= item.Priority %></td>
+        <td>
+          <a data-bs-toggle="tooltip" data-bs-title="Vue details" data-bs-placement="top"
+            class="btn btn-primary btn-sm" href="/view/<%= item._id %>"><i class="bi bi-eye"></i></a>
+          <a data-bs-toggle="tooltip" data-bs-title="Modifier ticket" data-bs-placement="top"
+            class="btn btn-primary btn-sm" href="/edit/<%= item._id %>"><i class="bi bi-pencil"></i></a>
+          <button data-bs-toggle="tooltip" data-bs-title="Supprimer" data-bs-placement="top"
+            class="btn btn-danger btn-sm"><i class="bi bi-trash3"></i></button>
+        </td>
+        </tr>
+     <% }) %>
+      </tbody>
+        </table>
+      
+   
+    </section>
+
+ 
+
+  </main>
+  <script src="../js/bootstrap.bundle.min.js"></script>
+
+  <script src="../js/sidebars.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+
+</html>
